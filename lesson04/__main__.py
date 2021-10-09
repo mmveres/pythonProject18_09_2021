@@ -51,3 +51,9 @@ if __name__ == '__main__':
     # bubble_sort(arr)
     # print(count)
     print(arr)
+
+    arr = [1,2,43,2,3,2,4,2,332,4,23,4,234,3,1,2,43,2,3,2,4,2,332,4,23,4,234,3]
+    arr.sort(reverse=True)
+    sort_arr = sorted(arr, reverse=True)
+    print(arr)
+    print(sort_arr)
