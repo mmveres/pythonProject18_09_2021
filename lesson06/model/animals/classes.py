@@ -4,7 +4,8 @@ class Cat:
         self.__age = age
         self.__name = name
         self.__mousses = list()
-
+    def get_mousses(self):
+        return self.__mousses
     def get_weight(self):
         return self.__weight
     def set_weight(self, value):

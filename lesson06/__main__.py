@@ -1,4 +1,8 @@
-from lesson06.classes import Cat, Mouse
+from lesson06.controll.doctor_controller import DoctorController
+from lesson06.controll.grandma_controller import GrandmaController
+from lesson06.model.animals.classes import Cat, Mouse
+from lesson06.model.keppers.grandma import Grandma
+from lesson06.model.medic.doctor import Doctor
 
 
 def test_class_cat():
@@ -20,16 +24,23 @@ def test_class_cat():
 
 
 if __name__ == '__main__':
-    try:
-        cat1 = Cat("Tom", 5, 7);
-        cat1.print_info()
-        m1 = Mouse("Jerry1", 0.35)
-        cat1.eat_mouse(m1)
-        m2 = Mouse("Jerry2", 0.35)
-        cat1.eat_mouse(m2)
-        for i in range(0,30):
-            cat1.eat_mouse(Mouse("BigJerry"+str(i), 0.5))
-        cat1.print_info()
-        m1.print_info()
-    except Exception as e:
-        print(e)
+    cat1 = Cat("Tom", 5, 7);
+    while(True):
+        print("1. Grandma")
+        print("2. Doctor")
+        choise = input("enter choice")
+        if choise == "1":
+            try:
+                cat1.print_info()
+                grandma_controll = GrandmaController(Grandma("GrandBa"))
+                grandma_controll.feed_cat(cat1)
+                cat1.print_info()
+
+            except Exception as e:
+                print(e)
+        elif choise == "2":
+            doc_controll = DoctorController(Doctor("AyBolit"))
+            doc_controll.diagnose(cat1)
+        else:
+            print("Exit")
+            break
