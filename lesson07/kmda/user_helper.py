@@ -1,6 +1,10 @@
-from lesson07.kmda.user import User
+import json
 
-def get_users_from_file(self, filename):
+from lesson07.kmda.user import User
+from lesson07.kmda.user_list import UserList
+
+
+def get_users_from_csv(filename):
     with open(filename, "r") as file_dig:
         users = list()
         title = file_dig.readline()
@@ -14,10 +18,22 @@ def get_users_from_file(self, filename):
                                 )
         return users
 
-def save_users_to_json(self, filename, users):
-    #TODO: implement
-    pass
+def save_users_to_json( filename, users: UserList):
+    with open(filename, "w") as file_dig:
+        json.dump(users.get_users_dict(),file_dig, ensure_ascii=False)
 
-def load_users_from_json(self, filename):
-    #TODO: implement
-    pass
+def get_users_from_json(filename):
+    users = list()
+    with open(filename, "r") as file_dig:
+        users_json = json.load(file_dig)
+        user_dict_list = users_json["users"]
+        for user_dict in user_dict_list:
+            users.append(User(user_dict["name"],
+                              user_dict["position"],
+                              float(user_dict["salary"]),
+                              float(user_dict["total"])
+            ))
+    return users
+
+if __name__ == '__main__':
+    print(get_users_from_json("users.json"))
