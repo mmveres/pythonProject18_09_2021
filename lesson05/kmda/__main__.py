@@ -6,7 +6,7 @@ if __name__ == '__main__':
     #     for row in reader:
     #       for key in row:
     #         print(key, " : ", row[key])
-    with open("lipen-2019.csv", "r") as file_dig:
+    with open("../../lesson07/kmda/lipen-2019.csv", "r") as file_dig:
         title = file_dig.readline()
         for row in file_dig:
             user_elem = row.split(";")
