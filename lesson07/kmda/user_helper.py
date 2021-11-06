@@ -1,4 +1,5 @@
 import json
+import urllib
 
 from lesson07.kmda.user import User
 from lesson07.kmda.user_list import UserList
@@ -35,5 +36,9 @@ def get_users_from_json(filename):
             ))
     return users
 
+def get_users_from_url(url):
+    data = urllib.urlopen(url)
+    print(data)
+
 if __name__ == '__main__':
-    print(get_users_from_json("users.json"))
+    get_users_from_url()
