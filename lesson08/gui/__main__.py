@@ -1,6 +1,10 @@
 from tkinter import Tk, Button, StringVar, Entry, Menu, Listbox, END, messagebox
 from tkinter import filedialog as fd
 
+from lesson07.kmda import user_helper
+from lesson07.kmda.user_list import UserList
+
+
 class Win:
     def __init__(self):
         self.win = Tk()
@@ -65,6 +69,10 @@ class Win:
 
     def open_file(self):
         name= fd.askopenfilename()
+        users = UserList(user_helper.get_users_from_csv(name))
+        self.languages_listbox.delete(0,END)
+        for user in users.get_users():
+            self.languages_listbox.insert(END, user)
         messagebox.showinfo("GUI Python",name)
 
 if __name__ == '__main__':
